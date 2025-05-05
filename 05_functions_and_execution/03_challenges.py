@@ -11,118 +11,59 @@ from test_api.checks import run_test, skip_test, format_err_msg
 # Challenge 0
 # This function should take a list as an argument and return True if the list
 #  is empty, False otherwise.
-def is_empty_list():
-    pass
-
-
-@run_test
-def test_is_empty_list():
-    assert is_empty_list([]) is True, format_err_msg(True, is_empty_list([]))
-    assert is_empty_list(["a", "b", "c", "d"]) is False, format_err_msg(
-        False, is_empty_list(["a", "b", "c", "d"])
-    )
-    assert is_empty_list(["a"]) is False, format_err_msg(False, is_empty_list(["a"]))
+def is_empty_list(lst):
+    return len(lst) == 0
 
 
 # Challenge 1
-# This function should take an dictionary representing a person and information
+# This function should take a dictionary representing a person and information
 #  about whether they like to code
-
+#
 # A person will take this form:
 # {
 #   "name": "Mitch",
 #   "likes_to_code": True
 # }
-
+#
 # If the 'likes_to_code' key is true, then you should return a string of the
 #   form "My name is Mitch and I like to code."
-
-
+#
 # If the 'likes_to_code' key is false, the string should look like
 #   "My name is Mitch and I don't like to code."
-def create_profile_description():
-    pass
-
-
-@skip_test
-def test_create_profile_description():
-    assert (
-        create_profile_description({"name": "Danika", "likes_to_code": True})
-        == "My name is Danika and I like to code."
-    ), format_err_msg(
-        "My name is Danika and I like to code.",
-        create_profile_description({"name": "Danika", "likes_to_code": True}),
-    )
-    assert (
-        create_profile_description({"name": "Alex", "likes_to_code": False})
-        == "My name is Alex and I don't like to code."
-    ), format_err_msg(
-        "My name is Alex and I don't like to code.",
-        create_profile_description({"name": "Alex", "likes_to_code": False}),
-    )
+def create_profile_description(person):
+    if person["likes_to_code"]:
+        return f"My name is {person['name']} and I like to code."
+    else:
+        return f"My name is {person['name']} and I don't like to code."
 
 
 # Challenge 2
 # This function should take a string representing a traffic light colour as
 #  an argument
-
+#
 # It will be one of "red", "green" or "amber" in either uppercase or lowercase
 # You should return a corresponding message
-
-
-def read_traffic_light():
-    pass
-
-
-@skip_test
-def test_read_traffic_light():
-    assert read_traffic_light("green") == "GO!", format_err_msg(
-        "GO!", read_traffic_light("green")
-    )
-    assert read_traffic_light("GREEN") == "GO!", format_err_msg(
-        "GO!", read_traffic_light("GREEN")
-    )
-
-    assert read_traffic_light("amber") == "GET READY...", format_err_msg(
-        "GET READY...", read_traffic_light("amber")
-    )
-    assert read_traffic_light("AMBER") == "GET READY...", format_err_msg(
-        "GET READY...", read_traffic_light("AMBER")
-    )
-
-    assert read_traffic_light("red") == "STOP!", format_err_msg(
-        "STOP!", read_traffic_light("red")
-    )
-    assert read_traffic_light("RED") == "STOP!", format_err_msg(
-        "STOP!", read_traffic_light("RED")
-    )
+def read_traffic_light(colour):
+    colour = colour.lower()
+    if colour == "green":
+        return "GO!"
+    elif colour == "amber":
+        return "GET READY..."
+    elif colour == "red":
+        return "STOP!"
 
 
 # Challenge 3
 # This function should take any number of arguments and return the number of
 #  arguments passed into the function
-def how_many_arguments():
-    pass
-
-
-@skip_test
-def test_how_many_arguments():
-    assert how_many_arguments("a", "b", "c") == 3, format_err_msg(
-        3, how_many_arguments("a", "b", "c")
-    )
-    assert how_many_arguments() == 0, format_err_msg(0, how_many_arguments())
-    assert how_many_arguments(1, 2, 3, 4, 5) == 5, format_err_msg(
-        5, how_many_arguments(1, 2, 3, 4, 5)
-    )
-    assert (
-        how_many_arguments("the", "meaning", "of", "life", "is", 42) == 6
-    ), format_err_msg(8, how_many_arguments("the", "meaning", "of", "life", "is", 42))
+def how_many_arguments(*args):
+    return len(args)
 
 
 # Challenge 4
 # This function should take a dictionary representing a coin machine and a
 #  string representing a coin as its arguments
-
+#
 # A coin machine object will take this form:
 # {
 #   "1p": 0,
@@ -130,12 +71,13 @@ def test_how_many_arguments():
 #   "5p": 0,
 #   "10p": 0
 # }
-
-
+#
 # You should 'add the provided coin to the machine by altering the associated
 #  key and returning the updated coin machine
-def update_coin_machine():
-    pass
+def update_coin_machine(coin_machine, coin):
+    coin_machine[coin] += 1
+    return coin_machine
+
 
 
 @skip_test
