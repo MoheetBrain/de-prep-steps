@@ -10,8 +10,9 @@ from test_api.checks import run_test, skip_test, format_err_msg
 
 # Challenge 0
 # This function should return the product of two passed numbers.
-def multiply():
-    pass
+def multiply(a,b):
+    return a * b
+
 
 
 @run_test
@@ -24,11 +25,12 @@ def test_multiply():
 # Challenge 1
 # This function should take a single argument and return its value rounded
 # DOWN to the nearest integer.
-def round_down():
-    pass
+import math
+def round_down(number):
+    return math.floor(number)
 
 
-@skip_test
+@run_test
 def test_round_down():
     assert round_down(100.1) == 100, format_err_msg(100, round_down(100.1))
     assert round_down(25.5) == 25, format_err_msg(100, round_down(25.5))
@@ -38,11 +40,11 @@ def test_round_down():
 # Challenge 2
 # This function should take two arguments, m and n, and return m raised to the
 # power of n.
-def raise_to_power():
-    pass
+def raise_to_power(m,n):
+    return m**n
 
 
-@skip_test
+@run_test
 def test_raise_to_power():
     assert raise_to_power(10, 3) == 1000, format_err_msg(1000, raise_to_power(10, 3))
     assert raise_to_power(25, 2) == 625, format_err_msg(625, raise_to_power(25, 2))
@@ -56,7 +58,7 @@ def is_multiple_of_6():
     pass
 
 
-@skip_test
+@run_test
 def test_is_multiple_of_6():
     assert is_multiple_of_6(6) is True, format_err_msg(True, is_multiple_of_6(6))
     assert is_multiple_of_6(10) is False, format_err_msg(False, is_multiple_of_6(10))
@@ -64,6 +66,15 @@ def test_is_multiple_of_6():
     assert is_multiple_of_6(36) is True, format_err_msg(True, is_multiple_of_6(36))
     assert is_multiple_of_6(60) is True, format_err_msg(True, is_multiple_of_6(60))
     assert is_multiple_of_6(61) is False, format_err_msg(False, is_multiple_of_6(61))
+
+
+# Challenge 4
+# This function should take a string as an argument and return
+# the same string with the first letter capitalised.
+
+
+def capitalise_first_letter():
+    pass
 
 
 # Challenge 4
@@ -88,6 +99,8 @@ def test_capitalise_first_letter():
     )
 
 
+
+
 # Challenge 5
 # This function should take a integer as an argument representing a year,
 # and return true if that year is in the 20th century and false otherwise.
@@ -97,7 +110,7 @@ def is_in_the_20th_century():
     pass
 
 
-@skip_test
+@run_test
 def test_is_in_the_20th_century():
     assert is_in_the_20th_century(1962) is True, format_err_msg(
         True, is_in_the_20th_century(1962)
@@ -120,6 +133,7 @@ def test_is_in_the_20th_century():
     assert is_in_the_20th_century(2000) is True, format_err_msg(
         True, is_in_the_20th_century(2000)
     )
+
 
 
 # Challenge 6
