@@ -7,6 +7,8 @@ from test_api.checks import run_test, format_err_msg
 # DO NOT CHANGE CODE ABOVE THIS LINE
 
 def calculate_price_percentage(percentage_changes):
+    return 100 + sum(percentage_changes)
+
     """
     This function is used by a shop to add percentage increases to the price of an item.
     The function will take a list of price increases/decreases as an argument and return the final price as a percentage of the total.
