@@ -10,12 +10,12 @@ from test_api.checks import run_test, skip_test, format_err_msg
 
 def confused_greeting(names):
 
-    confused_shouts = {}
+    confused_shouts = []
 
     for name in names:
-        confused_shouts.append(word + "? !")
+        confused_shouts.append(name + "? !")
 
-    return confused_shoots
+    return confused_shouts
 
 
 @run_test
@@ -45,10 +45,10 @@ def test_returns_list_of_names_with_symbols_appended():
 def clever_banking(value, interest_rate, years):
     bank_account = value
 
-    for i in range(1, years + 1):
-        bank_account += (1 + interest_rate)
+    for i in range(1, 1 + interest_rate):
+        bank_account *= (1 + interest_rate)
 
-    return value
+    return round(bank_account, 2)
 
 
 @skip_test
@@ -79,7 +79,7 @@ def capital_authors(list):
 
     for pair in list:
         authors.append(pair.split("-"))
-
+        authors.append(author.upper())
     return authors
 
 
@@ -111,11 +111,10 @@ def test_returns_list_of_capitalised_authors():
 # Fix the function below to pass the tests!
 
 def sum_sentence(list):
-    costs = []
+    costs = [fruit_dict['cost'] for fruit_dict in list]
     for fruit_dict in list:
-        costs.append(fruit_dict['cost'])
 
-    total = costs
+    total = sum(costs)
 
     return "The total cost of the fruits is £" + str(total)
 
